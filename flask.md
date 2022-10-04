@@ -4,22 +4,26 @@
 
 ### Flask print basic variable.
 
-from flask import Flask  
+```python
+from flask import Flask 
+```
 > Import Flask
-
+```python
 app = Flask(__name__) 
+```
 > Assigning app variable
-
+```python
 @app.route("/") 
+```
 > Routing it to the subpage in a domain , in this case it'll be the index page cuz no page name is defined.
-
+```python
 def home(): _ Function home to print the statement in HTML_
     return "Hello! This is the main page" 
 
 @app.route("/<name>") # We assign a variable as a subpage name and when we execute it , the variable is stored in ram.
 def user(name): # This stored variable name is used in this function.
     return f"Hello {name}"
-
+```
 ---
 
 >  Something you should know is that Python assigns the name "__main__" to the script when the script is executed.
@@ -29,7 +33,8 @@ def user(name): # This stored variable name is used in this function.
 >  This technique allows the programmer to have control over the script’s behavior.
     
 ---
-
+```python
 if __name__ == "__main__": 
     app.run()  
+```
  > Run the app using condition.
