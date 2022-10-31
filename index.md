@@ -6,3 +6,4 @@
 4. [tasks](tasks.md)
 5. [init](init.md)
 6. [forms](forms.md)
+7. [auto clear](Auto_Clear.md)
