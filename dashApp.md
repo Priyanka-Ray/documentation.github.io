@@ -4,7 +4,7 @@
 
 > These are the modules required by the script
 
-```apache
+```python
 from dash import html, dcc, Dash
 import pandas as pd
 import plotly.express as px
@@ -17,7 +17,7 @@ import plotly.io as io
 
 ### 2. Setting the template
 
-```apache
+```python
 io.templates.default = 'plotly_dark'
 ```
 
@@ -35,7 +35,7 @@ io.templates.default = 'plotly_dark'
 
 > Returns the unique_list generated
 
-```apache
+```python
 def get_params(folder):
     path1 = f"static/Output/{folder}/Nucleotide_Concentration/"
     path2 = f"static/Output/{folder}/Parameters/"
@@ -66,7 +66,7 @@ def get_params(folder):
 
 > The code iterates through the columns, converting the column values to list and concatenating "Sliding window" at the end. It also does the same for y across the column values and splits it while adding "Parameter" at the end.
 
-```apache
+```python
 def prepend(list, str):
   
         str += '{0}'
@@ -118,7 +118,7 @@ def prepend(list, str):
 >
 > return_folder function returns the pathname after being split
 
-```apache
+```python
 def create_dash_app(flask_app):
     dash_app = Dash(server=flask_app,name="Dashboard",url_base_pathname="/dash/")
     dash_app.title = "Graphs - DNAScanner"
@@ -157,7 +157,7 @@ def create_dash_app(flask_app):
 
 > Another function is defined for updating the dropdown when interacted with
 
-```apache
+```python
     @dash_app.callback([
     Output(component_id="parameter-dropdown",component_property="options"),
     Output(component_id="parameter-dropdown",component_property="value")
@@ -188,7 +188,7 @@ def create_dash_app(flask_app):
 
 > updates graph, adds slider, generates and returns the parameter and nucleotide concentration graphs in the dash app
 
-```apache
+```python
     dash_app.callback([
     Output(component_id="graph-figure",component_property="figure"),],
     [Input(component_id="parameter-dropdown",component_property="value"),
