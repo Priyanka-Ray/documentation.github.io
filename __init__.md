@@ -1,4 +1,4 @@
-<h1>1. Importing Modules </h1>
+** 1. Importing Modules
 
 
 ```python
@@ -15,7 +15,7 @@ from celery.result import AsyncResult
 
 ```
 
-<h1> 2. Declaring Flask app Configurations </h1>
+** 2. Declaring Flask app Configurations
 
 
 ```python
@@ -28,7 +28,7 @@ app.config['CELERY_BROKER_URL'] = os.getenv("CELERY_BROKER_URL")
 app.config['CELERY_RESULT_BACKEND'] = os.getenv("CELERY_RESULT_BACKEND")
 ```
 
-<h1> 3. Initializing Celery App </h1>
+** 3. Initializing Celery App
 
 
 ```python
@@ -37,14 +37,14 @@ celery= Celery('tasks',
                 backend=app.config['CELERY_RESULT_BACKEND'])
 ```
 
-<h1> 4. Initializing Dash App </h1>
+** 4. Initializing Dash App
 
 
 ```python
 create_dash_app(app)
 ```
 
-<h1> 5. Declaring app route for root </h1>
+** 5. Declaring app route for root
 
 
 ```python
@@ -55,7 +55,7 @@ def uploader():
 
 ```
 
-<h1>6. Setting up post request</h1>
+** 6. Setting up post request
 
 
 ```python
@@ -64,7 +64,7 @@ def upload():
     if request.method == "POST":
 ```
 
-<h1>7. Declaring variables</h1>
+** 7. Declaring variables
 
 
 ```python
@@ -78,7 +78,7 @@ def upload():
         sliding_arg = "
 ```
 
-<h1>8. Fetching parameters and inserting them in a string separated with a comma</h1>
+** 8. Fetching parameters and inserting them in a string separated with a comma
 
 
 ```python
@@ -105,7 +105,7 @@ def upload():
             sliding_arg += para + ","
 ```
 
-<h1>9. Declaring a dictionary which stores the given parameters</h1>
+** 9. Declaring a dictionary which stores the given parameters
 
 
 ```python
@@ -116,7 +116,7 @@ data = {
         }
 ```
 
-<h1> 10. File upload</h1>
+** 10. File upload
 
 
 ```python
@@ -131,7 +131,7 @@ if file_name != '':
                 data['file_name'] = file_name
 ```
 
-<h1>11. Text Upload</h1>
+** 11. Text Upload
 
 
 ```python
@@ -146,7 +146,7 @@ else:
                 flash("No file selected", "danger") 
 ```
 
-<h1>12. Sending celery task and returning job page if form validates otherwise redirect to home page</h1
+** 12. Sending celery task and returning job page if form validates otherwise redirect to home page
 
 
 ```python
@@ -156,7 +156,7 @@ upload_task = scan.apply_async(args=[data])
     return redirect(url_for('uploader'))
 ```
 
-<h1>13. Setting up job page route</h1>
+** 13. Setting up job page route
 
 
 ```python
@@ -168,7 +168,7 @@ def job(task):
     return render_template('job.html', job_id = task, status = status,title = "Pending")
 ```
 
-<h1> 14. Setting up results page route </h1>
+** 14. Setting up results page route
 
 
 ```python
@@ -182,7 +182,7 @@ def results(job_id):
     return render_template('results.html',job_id = job_id, output_folder = output_folder,parameters=parameters[:-1].replace(","," , "), title="Results",seq_no = seq_no,windowWidth=windowWidth)
 ```
 
-<h1> 15. Setting up other page route</h1>
+** 15. Setting up other page route
 
 
 ```python
@@ -203,7 +203,7 @@ def result_interpretation():
     return render_template('result_interpretation.html')
 ```
 
-<h1>16. File Download Route </h1>
+** 16. File Download Route 
 
 
 ```python
@@ -213,7 +213,7 @@ def download(filename):
     return send_from_directory(directory = download_folder, path = filename, as_attachment=True)
 ```
 
-<h1>17. Setting up error page if error occurs</h1>
+** 17. Setting up error page if error occurs
 
 
 ```python
@@ -226,7 +226,7 @@ def handle_error(e):
 
 ```
 
-<h1>18. Setting up local server</h1>
+** 18. Setting up local server
 
 
 ```python
