@@ -1,4 +1,6 @@
-<h1>1. Importing modules</h1>
+# Forms.py Documentation
+---
+## 1. Importing modules
 
 
 ```python
@@ -9,7 +11,7 @@ import pandas as pd
 import itertools
 ```
 
-<h1>2. FastaForm Class which generates the form inputs</h1>
+## 2. FastaForm Class which generates the form inputs
 
 
 ```python
@@ -20,7 +22,7 @@ class FastaForm(FlaskForm):
     submit = SubmitField("Submit")
 ```
 
-<h1>3. Declaring the path of parameter files</h1>
+## 3. Declaring the path of parameter files
 
 
 ```python
@@ -28,7 +30,7 @@ param_file_2 = "Parameter_Files/Parameter_Files_Trinucleotide - Sheet1.csv"
 param_file_1 = "Parameter_Files/Parameter_Sheet_Dinucleotide - Sheet1.csv"
 ```
 
-<h1>4. Variable Generator Function for providing rule parameters in the form</h1>
+## 4. Variable Generator Function for providing rule parameters in the form
 
 
 ```python
@@ -44,7 +46,7 @@ def VariableGenerator(length ,string):
     return var_list
 ```
 
-<h1>5. Storing all the parameters in parameters dictionary</h1>
+## 5. Storing all the parameters in parameters dictionary
 
 
 ```python
