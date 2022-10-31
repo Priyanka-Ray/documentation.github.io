@@ -1,4 +1,4 @@
-** 1. Importing Modules
+## 1. Importing Modules
 
 
 ```python
@@ -15,7 +15,7 @@ from celery.result import AsyncResult
 
 ```
 
-** 2. Declaring Flask app Configurations
+## 2. Declaring Flask app Configurations
 
 
 ```python
@@ -28,7 +28,7 @@ app.config['CELERY_BROKER_URL'] = os.getenv("CELERY_BROKER_URL")
 app.config['CELERY_RESULT_BACKEND'] = os.getenv("CELERY_RESULT_BACKEND")
 ```
 
-** 3. Initializing Celery App
+## 3. Initializing Celery App
 
 
 ```python
@@ -37,14 +37,14 @@ celery= Celery('tasks',
                 backend=app.config['CELERY_RESULT_BACKEND'])
 ```
 
-** 4. Initializing Dash App
+## 4. Initializing Dash App
 
 
 ```python
 create_dash_app(app)
 ```
 
-** 5. Declaring app route for root
+## 5. Declaring app route for root
 
 
 ```python
@@ -55,7 +55,7 @@ def uploader():
 
 ```
 
-** 6. Setting up post request
+## 6. Setting up post request
 
 
 ```python
@@ -64,7 +64,7 @@ def upload():
     if request.method == "POST":
 ```
 
-** 7. Declaring variables
+## 7. Declaring variables
 
 
 ```python
@@ -78,7 +78,7 @@ def upload():
         sliding_arg = "
 ```
 
-** 8. Fetching parameters and inserting them in a string separated with a comma
+## 8. Fetching parameters and inserting them in a string separated with a comma
 
 
 ```python
@@ -105,7 +105,7 @@ def upload():
             sliding_arg += para + ","
 ```
 
-** 9. Declaring a dictionary which stores the given parameters
+## 9. Declaring a dictionary which stores the given parameters
 
 
 ```python
@@ -116,7 +116,7 @@ data = {
         }
 ```
 
-** 10. File upload
+## 10. File upload
 
 
 ```python
@@ -131,7 +131,7 @@ if file_name != '':
                 data['file_name'] = file_name
 ```
 
-** 11. Text Upload
+## 11. Text Upload
 
 
 ```python
@@ -146,7 +146,7 @@ else:
                 flash("No file selected", "danger") 
 ```
 
-** 12. Sending celery task and returning job page if form validates otherwise redirect to home page
+## 12. Sending celery task and returning job page if form validates otherwise redirect to home page
 
 
 ```python
@@ -156,7 +156,7 @@ upload_task = scan.apply_async(args=[data])
     return redirect(url_for('uploader'))
 ```
 
-** 13. Setting up job page route
+## 13. Setting up job page route
 
 
 ```python
@@ -168,7 +168,7 @@ def job(task):
     return render_template('job.html', job_id = task, status = status,title = "Pending")
 ```
 
-** 14. Setting up results page route
+## 14. Setting up results page route
 
 
 ```python
@@ -182,7 +182,7 @@ def results(job_id):
     return render_template('results.html',job_id = job_id, output_folder = output_folder,parameters=parameters[:-1].replace(","," , "), title="Results",seq_no = seq_no,windowWidth=windowWidth)
 ```
 
-** 15. Setting up other page route
+## 15. Setting up other page route
 
 
 ```python
@@ -203,7 +203,7 @@ def result_interpretation():
     return render_template('result_interpretation.html')
 ```
 
-** 16. File Download Route 
+## 16. File Download Route 
 
 
 ```python
@@ -213,7 +213,7 @@ def download(filename):
     return send_from_directory(directory = download_folder, path = filename, as_attachment=True)
 ```
 
-** 17. Setting up error page if error occurs
+## 17. Setting up error page if error occurs
 
 
 ```python
@@ -226,7 +226,7 @@ def handle_error(e):
 
 ```
 
-** 18. Setting up local server
+## 18. Setting up local server
 
 
 ```python
