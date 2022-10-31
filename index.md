@@ -7,3 +7,4 @@
 5. [init](init.md)
 6. [forms](forms.md)
 7. [auto clear](Auto_Clear.md)
+8. [manual clear all](Manual_Clear_All.md)
