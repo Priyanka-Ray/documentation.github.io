@@ -8,7 +8,7 @@
 >
 > **dotenv** is a zero-dependency module that loads environment variables from a .env file into process.env.
 
-```apache
+```python
 import os
 import shutil
 from celery import Celery
@@ -21,7 +21,7 @@ from Bio import SeqIO
 
 ### 2. Load dotenv
 
-```apache
+```python
 load_dotenv()
 ```
 
@@ -29,7 +29,7 @@ load_dotenv()
 
 ### 3. Specify the ID
 
-```apache
+```python
 CELERY_BROKER_URL = os.getenv("CELERY_BROKER_URL")
 CELERY_RESULT_BACKEND = os.getenv("CELERY_RESULT_BACKEND")
 ```
@@ -40,7 +40,7 @@ CELERY_RESULT_BACKEND = os.getenv("CELERY_RESULT_BACKEND")
 
 > We use the previously defined Ids to call the arguments. Celery is passed to 'tasks, and broker and backend
 
-```apache
+```python
 celery= Celery('tasks',  
                 broker=CELERY_BROKER_URL,
                 backend=CELERY_RESULT_BACKEND)
@@ -50,7 +50,7 @@ celery= Celery('tasks',
 
 ### 5. Callback
 
-```apache
+```python
 @celery.task(name="app.scan", bind = True)
 ```
 
@@ -62,7 +62,7 @@ celery= Celery('tasks',
 
 > This function parses the length of the fasta file, if the file does not exist, it creates the output zip otherwise it clears the data from the folder.
 
-```apache
+```python
 def scan(self,data):
     output_folder = str(uuid.uuid4())
     seq_no = len(list(SeqIO.parse(data['file_name'], "fasta")))
