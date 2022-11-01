@@ -6,9 +6,8 @@
 import shutil
 import os
 ```
-> os package is used to interact with the operating system namely the shell.
-
-> shutil module in Python provides many functions of high-level operations on files and collections of files. It comes under Python’s standard utility modules.
+* os package is used to interact with the operating system namely the shell.
+* shutil module in Python provides many functions of high-level operations on files and collections of files. It comes under Python’s standard utility modules.
   
 ## Importing Directory Location
 
@@ -29,8 +28,8 @@ except:
     print("There was an error in deleting the files")
 ```
 
-> shutil.rmtree() is a function that is used to delete the entire directory along with the sub directories.
-> The code then looks for the Output directory , if it exists , the directory tree gets deleted.
+* shutil.rmtree() is a function that is used to delete the entire directory along with the sub directories.
+* The code then looks for the Output directory , if it exists , the directory tree gets deleted.
   
 ## Remake the Uploads Directory
 ```python
